@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 const App = () => {
 
@@ -6,7 +7,7 @@ const App = () => {
   const [error, setError] = useState(
     {
       error:false,
-      emssage: ""
+      message: ""
     }
   )
 
@@ -24,10 +25,16 @@ const App = () => {
     catch(err) {
       setError({ error:true, message: error.message})
     }
+}
+
+useEffect (() => {
+    handler();
+},[]);
+
     if(error.error){
       return <h1>{error.message}</h1>
     }
-  }
+  
   return (
     <div>
       <h1>advice</h1>
@@ -37,6 +44,3 @@ const App = () => {
   );
 };
 export default App;
-
-
-
